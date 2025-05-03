@@ -9,16 +9,16 @@
 #pragma once
 
 #include <JuceHeader.h>
-
+using namespace juce::dsp;
 //==============================================================================
 /**
 */
-class JUCE_FirFilterAudioProcessor  : public juce::AudioProcessor
+class FirFilter_JUCEAudioProcessor  : public juce::AudioProcessor, public juce::AudioProcessorValueTreeState::Listener
 {
 public:
     //==============================================================================
-    JUCE_FirFilterAudioProcessor();
-    ~JUCE_FirFilterAudioProcessor() override;
+    FirFilter_JUCEAudioProcessor();
+    ~FirFilter_JUCEAudioProcessor() override = default;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -53,7 +53,29 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-private:
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JUCE_FirFilterAudioProcessor)
+    void parameterChanged(const juce::String& parameterID, float newValue) override;
+
+private:
+    juce::AudioProcessorValueTreeState parameters;
+
+    float initialWindowParam;  // 初期値を直接保持
+    float initialFreqParam;
+    float initialOrderParam;
+
+    float lastSampleRate;
+    juce::dsp::WindowingFunction<float>::WindowingMethod windowingMethod;
+    float cutoffFrequency;
+    int filterOrder;
+
+    //std::unique_ptr<juce::dsp::FIR::Coefficients<float>> newCoefficients;
+
+
+    // クラスメンバとして宣言
+    juce::CriticalSection parameterUpdateLock;
+
+    ProcessorDuplicator<FIR::Filter<float>, FIR::Coefficients<float>> fir;
+
+    //==============================================================================
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FirFilter_JUCEAudioProcessor)
 };

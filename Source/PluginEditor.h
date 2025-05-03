@@ -9,25 +9,40 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "PluginProcessor.h"
+//#include "PluginProcessor.h"
 
 //==============================================================================
 /**
 */
-class JUCE_FirFilterAudioProcessorEditor  : public juce::AudioProcessorEditor
+class FirFilter_JUCEAudioProcessorEditor  : public juce::AudioProcessorEditor
 {
 public:
-    JUCE_FirFilterAudioProcessorEditor (JUCE_FirFilterAudioProcessor&);
-    ~JUCE_FirFilterAudioProcessorEditor() override;
+  FirFilter_JUCEAudioProcessorEditor (FirFilter_JUCEAudioProcessor&, juce::AudioProcessorValueTreeState& vts);
+  ~FirFilter_JUCEAudioProcessorEditor() override = default;
 
-    //==============================================================================
-    void paint (juce::Graphics&) override;
-    void resized() override;
+  //==============================================================================
+  void paint (juce::Graphics& g) override;
+  void resized() override; 
+  typedef juce::AudioProcessorValueTreeState::SliderAttachment SliderAttachment;
 
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
-    JUCE_FirFilterAudioProcessor& audioProcessor;
+  juce::LookAndFeel_V4 lightLookAndFeel;
+  juce::AudioProcessorValueTreeState& valueTreeState; // ✅ 参照で保持
+  juce::Slider dial1Slider;
+  juce::Slider dial2Slider;
+  
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JUCE_FirFilterAudioProcessorEditor)
+  juce::ComboBox selectComboBox;
+
+  juce::Label  label1;
+  juce::Label  label2;
+  juce::Label  label3;
+
+  //AudioProcessorValueTreeState::SliderAttachmentのスマートポインタ
+  std::unique_ptr<SliderAttachment> dial1Attachment;
+  std::unique_ptr<SliderAttachment> dial2Attachment;
+  std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> comboBoxAttachment;
+
+
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FirFilter_JUCEAudioProcessorEditor)
 };

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="qkVKfA" name="JUCE_FirFilter" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" bundleIdentifier="com.yourcompany.JUCE-fiFilter">
   <MAINGROUP id="L84Xnm" name="JUCE_FirFilter">
     <GROUP id="{BFD92621-D4D5-F289-A5C4-BBA54269522F}" name="Source">
       <FILE id="eTwANK" name="PluginProcessor.cpp" compile="1" resource="0"
