@@ -24,7 +24,7 @@ FirFilter_JUCEAudioProcessor::FirFilter_JUCEAudioProcessor()
     parameters(*this, nullptr, juce::Identifier("PARAMETERS"),
     juce::AudioProcessorValueTreeState::ParameterLayout {
       std::make_unique<juce::AudioParameterFloat>(juce::ParameterID { "window",  1}, "Window",
-      juce::NormalisableRange<float>(0, 7, 1),7),
+      juce::NormalisableRange<float>(0, 7, 1),0),
       std::make_unique<juce::AudioParameterFloat>(juce::ParameterID { "freq",  1}, "Freq",
       juce::NormalisableRange<float>(20.f, 20000.f, 0.01f),4400.f),
       std::make_unique<juce::AudioParameterFloat>(juce::ParameterID { "order",  1}, "Order",
@@ -169,7 +169,7 @@ bool FirFilter_JUCEAudioProcessor::isBusesLayoutSupported (const BusesLayout& la
 void FirFilter_JUCEAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedLock parameterLock (parameterUpdateLock);
-    
+
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
@@ -201,15 +201,17 @@ juce::AudioProcessorEditor* FirFilter_JUCEAudioProcessor::createEditor()
 //==============================================================================
 void FirFilter_JUCEAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
+    auto state = parameters.copyState();
+    std::unique_ptr<juce::XmlElement> xml(state.createXml());
+    copyXmlToBinary(*xml, destData);
 }
 
 void FirFilter_JUCEAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
+    std::unique_ptr<juce::XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
+    if (xmlState.get() != nullptr)
+        if (xmlState->hasTagName(parameters.state.getType()))
+            parameters.replaceState(juce::ValueTree::fromXml(*xmlState));
 }
 
 ////このコールバック メソッドは、パラメータが変更されたときに AudioProcessorValueTreeStateによって呼び出されます。
