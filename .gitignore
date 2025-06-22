@@ -1,2 +1,5 @@
-Builds/*
-!Builds/.gitkeep
+.DS_Store
+Build/
+!/Build/.gitkeep
+.vscode
+#export/*
