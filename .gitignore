@@ -1,5 +1,6 @@
 .DS_Store
-Build/
-!/Build/.gitkeep
+build/
+!/build/.gitkeep
 .vscode
+modules/*
 #export/*
