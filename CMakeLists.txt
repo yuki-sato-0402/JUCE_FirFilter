@@ -23,7 +23,7 @@ project(CMakeTest VERSION 0.0.1)
 
 # find_package(JUCE CONFIG REQUIRED)        # If you've installed JUCE to your system
 # or
-add_subdirectory(moduels/JUCE)                    # If you've put JUCE in a subdirectory called JUCE
+add_subdirectory(modules/JUCE)                    # If you've put JUCE in a subdirectory called JUCE
 
 # If you are building a VST2 or AAX plugin, CMake needs to be told where to find these SDKs on your
 # system. This setup should be done before calling `juce_add_plugin`.
@@ -106,8 +106,23 @@ target_link_libraries(CMakeTest
     PRIVATE
         # AudioPluginData           # If we'd created a binary data target, we'd link to it here
         juce::juce_audio_utils
-        juce::dsp
     PUBLIC
+        juce::juce_audio_basics
+        juce::juce_audio_devices
+        juce::juce_audio_formats
+        juce::juce_audio_plugin_client
+        juce::juce_audio_processors
+        juce::juce_audio_utils
+        juce::juce_core
+        juce::juce_cryptography
+        juce::juce_data_structures
+        juce::juce_dsp
+        juce::juce_events
+        juce::juce_graphics
+        juce::juce_gui_basics
+        juce::juce_gui_extra
+        juce::juce_opengl
+        juce::juce_product_unlocking
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags)
