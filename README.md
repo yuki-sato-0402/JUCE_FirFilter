@@ -1,7 +1,17 @@
 # JUCE_FirFilter
 Test of FIR Filter implementation
 
-Reference
+## 🛠️ Build Instructions
+```
+cd JUCE_FirFilter
+git submodule update --init --recursive
+cd build
+cmake ..
+cmake --build .
+```
+
+
+## Reference
 https://docs.juce.com/master/structdsp_1_1FilterDesign.html#a7de8d8793286c45e9a83c199de896b6e
 
 https://github.com/juce-framework/JUCE/blob/master/examples/DSP/FIRFilterDemo.h
