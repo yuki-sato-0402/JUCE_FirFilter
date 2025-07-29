@@ -2,7 +2,7 @@
 Test of FIR Filter implementation
 
 ## Demonstration
-[Youtube<img width="989" height="954" alt="Screenshot 2025-07-29 at 20 53 16" src="https://github.com/user-attachments/assets/8015aa26-e2fa-48db-9dc6-be30956af8c3" />](https://youtu.be/3PEqp8SDxo0?si=F6vbLT7BRgpUTpeU)
+[Youtube<img width="989" height="954" alt="Screenshot 2025-07-29 at 20 56 17" src="https://github.com/user-attachments/assets/7d872ba2-1621-456a-908b-ee65f92e8146" />](https://youtu.be/3PEqp8SDxo0?si=F6vbLT7BRgpUTpeU)
 
 ## 🛠️ Build Instructions
 ```
