@@ -1,6 +1,9 @@
 # JUCE_FirFilter
 Test of FIR Filter implementation
 
+## Demonstration
+[Youtube<img width="989" height="954" alt="Screenshot 2025-07-29 at 20 53 16" src="https://github.com/user-attachments/assets/8015aa26-e2fa-48db-9dc6-be30956af8c3" />](https://youtu.be/3PEqp8SDxo0?si=F6vbLT7BRgpUTpeU)
+
 ## 🛠️ Build Instructions
 ```
 cd JUCE_FirFilter
@@ -10,10 +13,9 @@ cmake ..
 cmake --build .
 ```
 
-
 ## Reference
-https://docs.juce.com/master/structdsp_1_1FilterDesign.html#a7de8d8793286c45e9a83c199de896b6e
+- [designFIRLowpassWindowMethod()](https://docs.juce.com/master/structdsp_1_1FilterDesign.html#a7de8d8793286c45e9a83c199de896b6e)
 
-https://github.com/juce-framework/JUCE/blob/master/examples/DSP/FIRFilterDemo.h
+- [JUCE/examples/DSP/FIRFilterDemo.h](https://github.com/juce-framework/JUCE/blob/master/examples/DSP/FIRFilterDemo.h)
 
-https://www.youtube.com/watch?v=nTVXy35rG4Q&ab_channel=TheAudioProgrammer
+- [Juce Tutorial 32- Building a Filter Plugin Using the DSP Module (FIR Filter)](https://www.youtube.com/watch?v=nTVXy35rG4Q&ab_channel=TheAudioProgrammer)
