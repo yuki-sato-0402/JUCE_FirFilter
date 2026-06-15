@@ -3,7 +3,8 @@ Test of AudioProcessorGraph Class.
 You can rearrange the order of EffectSlots by dragging and dropping them.
 Each effect ([FIR Filter](https://docs.juce.com/master/classjuce_1_1dsp_1_1FIR_1_1Filter.html), [Delay](https://docs.juce.com/master/classjuce_1_1dsp_1_1DelayLine.html), [Reverb](https://docs.juce.com/master/classjuce_1_1dsp_1_1Reverb.html), [Compressor](https://docs.juce.com/master/classjuce_1_1dsp_1_1Compressor.html))  utilizes Juce's DSP module.
 
-<img width="648" height="474" alt="Screenshot 2026-06-08 at 23 25 14" src="https://github.com/user-attachments/assets/dfc0973a-52e4-422d-8632-7ecf138f19c3" />
+[Youtube<img width="648" height="474" alt="Screenshot 2026-06-08 at 23 25 14" src="https://github.com/user-attachments/assets/dfc0973a-52e4-422d-8632-7ecf138f19c3" />](https://youtu.be/x_wckmZKYtE)
+
 
 ## 🛠️ Build Instructions
 ```
